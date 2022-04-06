@@ -5,6 +5,11 @@ import time
 import os
 import pandas as pd
 import sqlite3
+from pytest import Session
+
+import requests
+from sockets.server import Server
+from child_process.process import SubProcess
 
 class bcolors:
     HEADER = '\033[95m'
@@ -32,6 +37,10 @@ class size:
 	STATUS = 12
 	TOTAL = SCRIPT_NAME + PID + RTSP + STATUS
 	MARGIN = 2
+
+	ID = 4
+	NAME = 22
+	TOTAL2 = ID + NAME + SCRIPT_NAME
 
 def tittle():
 	os.system("clear")
@@ -120,6 +129,27 @@ def scripts_table():
 		rlist, wlist, xlist = select([sys.stdin], [], [], timeout)
 		if rlist: break
 
+def table_devices(list_devices):
+	# Mostrar la informacion que se obtuvo del endpoint 
+	
+	# Columnas 
+	print("", flush=True)
+	print("=" * (size.TOTAL2 + size.MARGIN))
+	txt = "ID".center(size.ID, " ") + "|" + \
+		  "NAME".center(size.NAME, " ") + "|" + \
+		  "SCRIPT".center(size.SCRIPT_NAME, " ")
+	print(txt)
+	print("=" * (size.TOTAL2 + size.MARGIN))
+
+	for i in range(len(list_devices)):
+		txt = str(list_devices[i]['id']).center(size.ID, " ") + "|" + \
+			  list_devices[i]['name'].center(size.NAME, " ") + "|"
+		print(txt)
+		print("=" * (size.TOTAL2 + size.MARGIN))
+	
+	print("")
+	
+
 def filter_input():
 	"""
 	Esta funcion se encarga de filtrar cualquier entrada por teclado que no sea correcta
@@ -138,6 +168,17 @@ def transition(option, menu):
 	"""Esta funcion realiza una pequena animacion entre cambio de menus"""
 	tittle(); menu(option)
 	time.sleep(0.5)
+
+def progress_bar(text, clear=True):
+	# Animacion de carga
+	points = 3
+	txt = "\r" + text + "."
+	
+	for i in range(points):
+		print(txt, end="", flush=True)
+		txt = txt + "."
+		time.sleep(1)
+		if i < points - 1 and clear: os.system("clear")
 
 def start_interface():
 	# Interfaz del launcher con el usuario 
@@ -160,5 +201,74 @@ def start_interface():
 		else: 
 			break ## Por el momento las demas opciones aun no han sido creadas ##
 
+# Entramos al endpoint login para obtener el token de autenticacion
+session = requests.Session()
+pload = {'username': 'javier.rodriguez', 'password':'secret123'}
+req = session.post('http://192.168.0.135:8000/api/v1/login', data=pload)
+
+os.system("clear")
+progress_bar("Conectando con el EndPoint")
+
+# Verificamos que el servidor fue alcanzado
+if not req:
+	raise ConnectionError(f"La conexion con login no ha podido ser establecida {req}")
+
+req_json = req.json()
+if req_json['code'] == 401: # Credenciales invalidas
+	raise ConnectionError(f"Las credenciales son incorrectas")
+
+# Conexion correcta
+print(f"{bcolors.OKGREEN}OK{bcolors.ENDC}")
+
+headers = {'Authorization': 'Bearer ' + req_json['response']['token']}
+progress_bar("Obteniendo info", clear=False)
+
+# Obtenemos la lista de todos los devices en la DB
+resp = session.get('http://192.168.0.135:8000/api/v1/devices', headers=headers).json()
+list_devices_fromDB = resp['response']
+list_devices = []
+
+# Obtenemos la informacion que requieren los scripts que van a ser lanzados
+for device in list_devices_fromDB:
+	temp_dict = {'id': device['id'],
+                 'name': device['name'],
+                 'area': device['area']['name'],
+            	 'rtsp_url': device['rtsp_url'],
+				 'rtsp_recording_url': device['rtsp_recording_url']}
+	list_devices.append(temp_dict)
+
+# Dispositivos obtenidos correctamente
+print(f"{bcolors.OKGREEN}OK{bcolors.ENDC}")
+
+# Mostramos los scripts a lanzar
+table_devices(list_devices)
+
+# Lanzamos los scripts necesarios
+print("Lanzando scripts...")
+
+scripts = []
+for i in range(len(list_devices) - 2):
+	# Ejecutamos el numero de scripts necesarios 
+	prss = SubProcess("test_detector.py --pos 1 --pos2 1")
+	prss.runScript()
+
+	txt = f"{bcolors.BOLD}ID: {bcolors.ENDC}" + str(list_devices[i]['id']) + " " + \
+		  f"{bcolors.BOLD}NAME: {bcolors.ENDC}" + list_devices[i]['name']  + " " + \
+		  f"{bcolors.BOLD}SCRIPT: {bcolors.ENDC}" + "test.py" + " " 
+
+	if prss.isScriptRunning():
+		print(txt + f"{bcolors.OKGREEN}OK{bcolors.ENDC}")
+		scripts.append(prss)
+	else:
+		print(txt + f"{bcolors.FAIL}FAIL{bcolors.FAIL}")
+		scripts.append(None)
+	
+	time.sleep(10)
+
+for i in range(len(scripts)): # None !!
+	scripts[i].stopScript()
+
 start_interface()
+
+session.close()
 os.system("clear")
