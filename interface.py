@@ -5,11 +5,12 @@ import time
 import os
 import pandas as pd
 import sqlite3
-from pytest import Session
 
 import requests
 from sockets.server import Server
 from child_process.process import SubProcess
+
+import dataScripts as data
 
 class bcolors:
     HEADER = '\033[95m'
@@ -31,7 +32,7 @@ class options:
 	MAIN3 = 3
 
 class size:
-	SCRIPT_NAME = 15
+	SCRIPT_NAME = 20
 	PID = 10
 	RTSP = 66
 	STATUS = 12
@@ -246,18 +247,32 @@ table_devices(list_devices)
 # Lanzamos los scripts necesarios
 print("Lanzando scripts...")
 
+# Creamos la DB donde los scripts actualizan su estado
+# Esta es la forma en que la interfaz mantiene la info
+# sobre el estado de los scripts
+name_db = 'status_scripts.db'
+data.create_data_base(name_db) 
+
+script_name = "test_detector.py"
 scripts = []
 for i in range(len(list_devices) - 2):
 	# Ejecutamos el numero de scripts necesarios 
-	prss = SubProcess("test_detector.py --pos 1 --pos2 1")
+	prss = SubProcess(script_name + " --pos 1 --pos2 1")
 	prss.runScript()
 
 	txt = f"{bcolors.BOLD}ID: {bcolors.ENDC}" + str(list_devices[i]['id']) + " " + \
 		  f"{bcolors.BOLD}NAME: {bcolors.ENDC}" + list_devices[i]['name']  + " " + \
-		  f"{bcolors.BOLD}SCRIPT: {bcolors.ENDC}" + "test.py" + " " 
+		  f"{bcolors.BOLD}SCRIPT: {bcolors.ENDC}" + script_name + " " 
 
 	if prss.isScriptRunning():
 		print(txt + f"{bcolors.OKGREEN}OK{bcolors.ENDC}")
+		rtsp = list_devices[i]['rtsp_url']
+		data.insertRow(name_db=name_db,
+					   script=script_name,
+					   pid=prss.get_pid(),
+					   rtsp=rtsp,
+					   status=-1) # Cada script debe de conectarse con el servidor 
+					   			  # para actulizar su estado
 		scripts.append(prss)
 	else:
 		print(txt + f"{bcolors.FAIL}FAIL{bcolors.FAIL}")

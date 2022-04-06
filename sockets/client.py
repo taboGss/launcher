@@ -1,4 +1,5 @@
 import socket
+import dataScripts
 
 class Client:
 	"""Cliente TCP a traves de sockets
