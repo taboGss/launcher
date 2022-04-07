@@ -1,10 +1,9 @@
 import argparse
 import cv2
-from client import Client
+import client
 
 def move():
-	client = Client()
-	client.connect_to_server()
+	client.connect_to_launcher()
 	
 	img = cv2.imread('/home/tabo/Desktop/lenna.jpg')
 	cv2.imshow('image', img)

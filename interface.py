@@ -68,7 +68,11 @@ def main_menu(option):
 	else: 
 		print(">> 4. Detener el launcher.")
 
-	print("\nSelect: ", end="")
+	if option == 4:
+		print("\nSaliendo del launcher...")
+	
+	if option == options.INVALID:
+		print("\nSelect: ", end="")
 
 def scripts_table():
 	# Mostrar los scripts que se estan ejecutando y sus respectivos estados
@@ -243,6 +247,7 @@ for device in list_devices_fromDB:
 
 # Dispositivos obtenidos correctamente
 print(f"{bcolors.OKGREEN}OK{bcolors.ENDC}")
+session.close()
 
 # Mostramos los scripts a lanzar
 table_devices(list_devices)
@@ -258,7 +263,7 @@ data.create_data_base(name_db)
 
 script_name = "test_detector.py"
 scripts = []
-for i in range(len(list_devices) - 2):
+for i in range(len(list_devices)):
 	# Ejecutamos el numero de scripts necesarios 
 	prss = SubProcess(script_name + " --pos 1 --pos2 1")
 	prss.runScript()
@@ -281,12 +286,11 @@ for i in range(len(list_devices) - 2):
 		print(txt + f"{bcolors.FAIL}FAIL{bcolors.FAIL}")
 		scripts.append(None)
 	
-	time.sleep(10)
+	time.sleep(2)
 
+# Comunicacion con el usuario
 start_interface()
 
-for i in range(len(scripts)): # None !!
-	scripts[i].stopScript()
-
-session.close()
+# Salimos del launcher, cerramos todos los scripts que se estan ejecuatando
+for i in range(len(scripts)): scripts[i].stopScript()
 os.system("clear")
