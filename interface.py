@@ -7,7 +7,6 @@ import pandas as pd
 import sqlite3
 
 import requests
-from sockets.server import Server
 from child_process.process import SubProcess
 
 import dataScripts as data
@@ -208,7 +207,7 @@ pload = {'username': 'javier.rodriguez', 'password':'secret123'}
 req = session.post('http://192.168.0.135:8000/api/v1/login', data=pload)
 
 os.system("clear")
-progress_bar("Conectando con el EndPoint")
+print("Conectando con el EndPoint... ", end="")
 
 # Verificamos que el servidor fue alcanzado
 if not req:
@@ -222,7 +221,7 @@ if req_json['code'] == 401: # Credenciales invalidas
 print(f"{bcolors.OKGREEN}OK{bcolors.ENDC}")
 
 headers = {'Authorization': 'Bearer ' + req_json['response']['token']}
-progress_bar("Obteniendo info", clear=False)
+print("Obteniendo info... ", end="")
 
 # Obtenemos la lista de todos los devices en la DB
 resp = session.get('http://192.168.0.135:8000/api/v1/devices', headers=headers).json()
@@ -265,7 +264,7 @@ for i in range(len(list_devices) - 2):
 		  f"{bcolors.BOLD}SCRIPT: {bcolors.ENDC}" + script_name + " " 
 
 	if prss.isScriptRunning():
-		print(txt + f"{bcolors.OKGREEN}OK{bcolors.ENDC}")
+		print(txt + f"{bcolors.OKGREEN}OK{bcolors.ENDC}") # Script lanzado correctamente
 		rtsp = list_devices[i]['rtsp_url']
 		data.insertRow(name_db=name_db,
 					   script=script_name,
@@ -280,8 +279,19 @@ for i in range(len(list_devices) - 2):
 	
 	time.sleep(10)
 
+# Lanzamos el servidor 
+print("\nLanzando servidor...", end="")
+prss_server = SubProcess("server.py")
+prss_server.runScript()
+time.sleep(10)
+
 for i in range(len(scripts)): # None !!
 	scripts[i].stopScript()
+
+if prss_server.isScriptRunning():
+	print(f"{bcolors.OKGREEN}OK{bcolors.ENDC}") # Script lanzado correctamente
+prss_server.stopScript()
+	
 
 start_interface()
 

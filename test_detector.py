@@ -1,19 +1,17 @@
 import argparse
 import cv2
-from sockets.client import Client
+from client import Client
 
 def move():
-	#client = Client()
-	#client.connect_to_server()
+	client = Client()
+	client.connect_to_server()
 	
 	img = cv2.imread('/home/tabo/Desktop/lenna.jpg')
 	cv2.imshow('image', img)
 	cv2.waitKey(0)
 
 	cv2.destroyAllWindows()
-
-	#client.send_request("He muerto")
-	#client.close()
+	client.close()
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser()

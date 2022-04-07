@@ -39,7 +39,7 @@ class Client:
 				self.__socket_client.connect(('localhost', self.__port))
 				# Una vez que realizamos la conexion con el servidor
 				# actualizamos el status en la db
-				data.update_status(self.name_db, self.pid, -1) # Status: running
+				data.update_status(self.name_db, self.pid, 1) # Status: running
 				break
 			except:
 				pass

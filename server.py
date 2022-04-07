@@ -38,34 +38,24 @@ class ThreadServer(threading.Thread):
 			if request == "": continue
 			print(request)
 
-class Server:
-	"""Clase Servidor. Crea los sockets multihilo para poder manejar
-	   diferentes clientes
-	
-	Methods
-	-------
-	start(headers: dictionary)
-		Incia el servidor
-		
-	"""
-	def __init__(self):
-		self.threads = [] # Arreglo para guardar los hilos
-		self.port = 8080 # Listener en el puerto 8080
-		self.address = 0 # Numero de scripts corriendo
+threads = [] # Arreglo para guardar los hilos
+port = 8080 # Listener en el puerto 8080
+address = 0 # Numero de scripts corriendo
+headers = ""
 
-		# Creamos un socket para leer las peticiones de escritura de cada
-		# script en la DB
-		self.socket_server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-		self.socket_server.bind(('localhost', self.port)) 
-		self.socket_server.listen(5)
+# Creamos un socket para leer las peticiones de escritura de cada
+# script en la DB
+socket_server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+socket_server.bind(('localhost', port)) 
+socket_server.listen(5)
 
-	def acccept_connection(self, headers):
-			# Creamos la conexion con cada cliente una a la vez
-			connection, _ = self.socket_server.accept()
-			thread_server = ThreadServer(connection, self.address, headers)
-			self.address += 1
+while True:
+	# Creamos la conexion con cada cliente una a la vez
+	connection, _ = socket_server.accept()
+	thread_server = ThreadServer(connection, address, headers)
+	address += 1
 			
-			thread_server.start()
-			self.threads.append(thread_server)
+	thread_server.start()
+	threads.append(thread_server)
 
 

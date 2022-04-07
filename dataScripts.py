@@ -27,4 +27,13 @@ def insertRow(name_db, script, pid, rtsp, status):
     conn.commit()
     conn.close()
 
+def update_status(name_db, pid, status):
+    conn = sqlite3.connect(name_db)
+    cursor = conn.cursor()
+    instruccion = f"UPDATE statusScripts SET status={status} WHERE pid like {pid}"
+    cursor.execute(instruccion)
+
+    conn.commit()
+    conn.close()
+
 
