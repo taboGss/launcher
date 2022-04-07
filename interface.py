@@ -5,10 +5,8 @@ import time
 import os
 import pandas as pd
 import sqlite3
-
 import requests
 from child_process.process import SubProcess
-
 import dataScripts as data
 
 class bcolors:
@@ -43,13 +41,13 @@ class size:
 	TOTAL2 = ID + NAME + SCRIPT_NAME
 
 def tittle():
+	# Logo del launcher
 	os.system("clear")
-	result = pyfiglet.figlet_format("Launcher") # Logo del launcher
+	result = pyfiglet.figlet_format("Launcher") 
 	print(result)
 
 def main_menu(option):
-	# Esta funcion muestra el menu principal del launcher 
-
+	# Menu principal del launcher 
 	if option == 1 : 
 		print(f"{bcolors.BOLD}>> 1. Mostrar scripts en ejecucion.{bcolors.ENDC}")
 	else: 
@@ -73,13 +71,19 @@ def main_menu(option):
 	print("\nSelect: ", end="")
 
 def scripts_table():
-	# Esta funcion muestra los scripts que se estan ejecutando y 
-	# sus respectivos estados
-
+	# Mostrar los scripts que se estan ejecutando y sus respectivos estados
 	while True:
+		# Verificamos que los scripts esten corriendo
+		for i in range(len(scripts)):
+			if not scripts[i].isScriptRunning():
+				# Si el script ya no esta corriendo actualizamos la db
+				# y lo eliminamos de la lista
+				data.update_status(name_db, scripts[i].get_pid(), -1)
+				scripts.pop(i)
+				break
+		
 		tittle(); 
-
-		# Columnas que se muestran para la funcion scripts_table
+		# Columnas 
 		print("=" * (size.TOTAL + size.MARGIN))
 		txt = "SCRIPT".center(size.SCRIPT_NAME, " ") + "|" + \
 		  	  "PID".center(size.PID, " ") + "|" + \
@@ -121,7 +125,7 @@ def scripts_table():
 				print(f"{bcolors.ENDC}")
 	
 			print("-" * (size.TOTAL + size.MARGIN))
-
+		
 		conn.close()
 
 		print("\nPara salir presione Enter", end="")
@@ -149,7 +153,6 @@ def table_devices(list_devices):
 	
 	print("")
 	
-
 def filter_input():
 	"""
 	Esta funcion se encarga de filtrar cualquier entrada por teclado que no sea correcta
@@ -165,8 +168,9 @@ def filter_input():
 	return option
 
 def transition(option, menu): 
-	"""Esta funcion realiza una pequena animacion entre cambio de menus"""
-	tittle(); menu(option)
+	# Realizar una pequena animacion entre cambio de menus"""
+	tittle() 
+	menu(option)
 	time.sleep(0.5)
 
 def progress_bar(text, clear=True):
@@ -279,21 +283,10 @@ for i in range(len(list_devices) - 2):
 	
 	time.sleep(10)
 
-# Lanzamos el servidor 
-print("\nLanzando servidor...", end="")
-prss_server = SubProcess("server.py")
-prss_server.runScript()
-time.sleep(10)
+start_interface()
 
 for i in range(len(scripts)): # None !!
 	scripts[i].stopScript()
-
-if prss_server.isScriptRunning():
-	print(f"{bcolors.OKGREEN}OK{bcolors.ENDC}") # Script lanzado correctamente
-prss_server.stopScript()
-	
-
-start_interface()
 
 session.close()
 os.system("clear")
