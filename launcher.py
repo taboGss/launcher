@@ -6,39 +6,12 @@ import os
 import pandas as pd
 import sqlite3
 import requests
-from child_process.process import SubProcess
-import dataScripts as data
 
-class bcolors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKCYAN = '\033[96m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
-
-class options:
-	ESCAPE = 4
-	INVALID = -999
-	RESTART = -999
-	MAIN1 = 1
-	MAIN2 = 2
-	MAIN3 = 3
-
-class size:
-	SCRIPT_NAME = 20
-	PID = 10
-	RTSP = 66
-	STATUS = 12
-	TOTAL = SCRIPT_NAME + PID + RTSP + STATUS
-	MARGIN = 2
-
-	ID = 4
-	NAME = 22
-	TOTAL2 = ID + NAME + SCRIPT_NAME
+# Modulos y clases creados para el launcher 
+import utils_launcher.data_scripts as data
+from utils_launcher.process import SubProcess
+from utils_launcher.values import bcolors, size, options
+from utils_launcher.values import name_db
 
 def tittle():
 	# Logo del launcher
@@ -88,17 +61,17 @@ def scripts_table():
 		
 		tittle(); 
 		# Columnas 
-		print("=" * (size.TOTAL + size.MARGIN))
+		print("=" * (size.SCRIPTS_TABLE))
 		txt = "SCRIPT".center(size.SCRIPT_NAME, " ") + "|" + \
 		  	  "PID".center(size.PID, " ") + "|" + \
 		  	  "RTSP".center(size.RTSP, " ") + "|" + \
 		  	  "STATUS".center(size.STATUS, " ")
 		print(txt)
-		print("=" * (size.TOTAL + size.MARGIN))
+		print("=" * (size.SCRIPTS_TABLE))
 
 		# Leemos la base de datos para conocer el estado actual de los scripts
 		# que esta corriendo el launcher
-		conn = sqlite3.connect('status_scripts.db')
+		conn = sqlite3.connect(name_db)
 		df = pd.read_sql('SELECT * FROM statusScripts', con=conn)
 
 		for i in range(len(df.index)):
@@ -128,7 +101,7 @@ def scripts_table():
 				print("Connecting".center(size.STATUS, " "), end="")
 				print(f"{bcolors.ENDC}")
 	
-			print("-" * (size.TOTAL + size.MARGIN))
+			print("-" * (size.SCRIPTS_TABLE))
 		
 		conn.close()
 
@@ -142,18 +115,18 @@ def table_devices(list_devices):
 	
 	# Columnas 
 	print("", flush=True)
-	print("=" * (size.TOTAL2 + size.MARGIN))
+	print("=" * size.DEVICES_TABLE)
 	txt = "ID".center(size.ID, " ") + "|" + \
 		  "NAME".center(size.NAME, " ") + "|" + \
 		  "SCRIPT".center(size.SCRIPT_NAME, " ")
 	print(txt)
-	print("=" * (size.TOTAL2 + size.MARGIN))
+	print("=" * size.DEVICES_TABLE)
 
 	for i in range(len(list_devices)):
 		txt = str(list_devices[i]['id']).center(size.ID, " ") + "|" + \
 			  list_devices[i]['name'].center(size.NAME, " ") + "|"
 		print(txt)
-		print("=" * (size.TOTAL2 + size.MARGIN))
+		print("=" * size.DEVICES_TABLE)
 	
 	print("")
 	
@@ -176,17 +149,6 @@ def transition(option, menu):
 	tittle() 
 	menu(option)
 	time.sleep(0.5)
-
-def progress_bar(text, clear=True):
-	# Animacion de carga
-	points = 3
-	txt = "\r" + text + "."
-	
-	for i in range(points):
-		print(txt, end="", flush=True)
-		txt = txt + "."
-		time.sleep(1)
-		if i < points - 1 and clear: os.system("clear")
 
 def start_interface():
 	# Interfaz del launcher con el usuario 
@@ -258,7 +220,6 @@ print("Lanzando scripts...")
 # Creamos la DB donde los scripts actualizan su estado
 # Esta es la forma en que la interfaz mantiene la info
 # sobre el estado de los scripts
-name_db = 'status_scripts.db'
 data.create_data_base(name_db) 
 
 script_name = "test_detector.py"

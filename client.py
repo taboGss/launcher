@@ -1,10 +1,9 @@
 import os
 import requests
-import dataScripts as data
+import utils_launcher.data_scripts as data
+from utils_launcher.values import name_db
 
-name_db = 'status_scripts.db'
 pid = os.getpid()
-
 session = requests.Session()
 headers = {}
 
@@ -33,13 +32,14 @@ def update_params(coordinate_x, coordinate_y, temp):
 							 "y": coordinate_y,
 							 "temp": temp}]}
 	
-
 	req = session.post("http://192.168.0.135:8000/api/v1/device-coord",
 					   json=data,
 					   headers=headers)
-	print(req)
 
 def connecting_rtsp():
 	data.update_status(name_db, pid, 0) # Status: running
+
+def close():
+	session.close()
 
 
