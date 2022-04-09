@@ -1,3 +1,4 @@
+from http.client import UNAUTHORIZED
 import os
 
 # Colores para imprimir los mensaje que genera la base de datos
@@ -36,6 +37,16 @@ class size:
     ID = 4
     NAME = 22
     DEVICES_TABLE = ID + NAME + SCRIPT_NAME + MARGIN
+
+# Status code errors enviados por el endpoint
+class HTTP_ERROR:
+    UNAUTHORIZED = 401
+
+# Estados de los scripts
+class status:
+    RUNNING = 1
+    STOPPED = -1
+    CONNECTING = 0
 
 dir = 'utils_launcher'
 name_db = os.path.join(os.getcwd(), dir, "status_scripts.db") # Nombre de la base de datos
