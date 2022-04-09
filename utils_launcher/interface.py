@@ -1,3 +1,4 @@
+from turtle import rt
 import pyfiglet
 import sys
 from select import select
@@ -9,6 +10,7 @@ import sqlite3
 # Modulos y clases creados para el launcher
 import utils_launcher.data_scripts as data
 from utils_launcher.values import bcolors, size, options
+from utils_launcher.values import status as status_script
 from utils_launcher.values import name_db
 
 def tittle():
@@ -45,7 +47,6 @@ def main_menu(option):
     if option == options.INVALID:
         print("\nSelect: ", end="")
 
-
 def scripts_table(scripts):
     # Mostrar los scripts que se estan ejecutando y sus respectivos estados
     while True:
@@ -54,7 +55,7 @@ def scripts_table(scripts):
             if not scripts[i].isScriptRunning():
                 # Si el script ya no esta corriendo actualizamos la db
                 # y lo eliminamos de la lista
-                data.update_status(name_db, scripts[i].get_pid(), -1)
+                data.update_status(name_db, scripts[i].get_pid(), status_script.STOPPED)
                 scripts.pop(i)
                 break
 
@@ -74,9 +75,9 @@ def scripts_table(scripts):
         df = pd.read_sql('SELECT * FROM statusScripts', con=conn)
 
         for i in range(len(df.index)):
-            script_name = df['script'][i]
-            pid = str(df['pid'][i])
-            rtsp = df['rtsp'][i]
+            script_name = adapt_to_size(df['script'][i], size.SCRIPT_NAME)
+            pid = str(df['pid'][i])   
+            rtsp = adapt_to_size(df['rtsp'][i] + "adadasdsa", size.RTSP)
             status = df['status'][i]
 
             txt = script_name.center(size.SCRIPT_NAME, " ") + "|" + \
@@ -85,12 +86,12 @@ def scripts_table(scripts):
 
             print(txt, end="")
 
-            if status == 1:  # El script esta corriendo correctamente
+            if status == status_script.RUNNING:
                 print(f"{bcolors.OKGREEN}", end="")
                 print("Running".center(size.STATUS, " "), end="")
                 print(f"{bcolors.ENDC}")
 
-            elif status == -1:  # El script se detuvo
+            elif status == status_script.STOPPED:
                 print(f"{bcolors.FAIL}", end="")
                 print("Stopped".center(size.STATUS, " "), end="")
                 print(f"{bcolors.ENDC}")
@@ -132,7 +133,6 @@ def table_devices(list_devices):
 
     print("")
 
-
 def filter_input():
     """
     Esta funcion se encarga de filtrar cualquier entrada por teclado que no sea correcta
@@ -149,13 +149,17 @@ def filter_input():
 
     return option
 
-
+def adapt_to_size(string, size):
+    if len(string) <= size: 
+        return string
+    else: 
+        return (string[:size - 4] + "...")  
+    
 def transition(option, menu):
     # Realizar una pequena animacion entre cambio de menus"""
     tittle()
     menu(option)
     time.sleep(0.5)
-
 
 def run_interface(scripts):
     # Interfaz del launcher con el usuario

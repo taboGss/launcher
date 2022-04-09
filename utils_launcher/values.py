@@ -27,10 +27,10 @@ class options:
 
 # Medidas de las tablas
 class size:
-    SCRIPT_NAME = 20
-    PID = 10
-    RTSP = 66
-    STATUS = 12
+    SCRIPT_NAME = 25
+    PID = 7
+    RTSP = 67
+    STATUS = 14
     MARGIN = 2
     SCRIPTS_TABLE = SCRIPT_NAME + PID + RTSP + STATUS + MARGIN
 

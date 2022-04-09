@@ -62,7 +62,7 @@ def launch_scripts(list_devices):
     # sobre el estado de los scripts
     data.create_data_base(name_db)
 
-    script_name = "test_detector.py"
+    script_name = "test_detectoradasdasdasdasdsa.py"
     scripts = []
     for i in range(len(list_devices)):
         # Ejecutamos el numero de scripts necesarios
