@@ -5,7 +5,7 @@ import client
 def move():
 	client.connect_to_launcher()
 	
-	img = cv2.imread('/home/tabo/Desktop/lenna.jpg')
+	img = cv2.imread('lenna.jpg')
 	cv2.imshow('image', img)
 	cv2.waitKey(0)
 	
