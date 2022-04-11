@@ -77,7 +77,7 @@ def scripts_table(scripts):
         for i in range(len(df.index)):
             script_name = adapt_to_size(df['script'][i], size.SCRIPT_NAME)
             pid = str(df['pid'][i])   
-            rtsp = adapt_to_size(df['rtsp'][i] + "adadasdsa", size.RTSP)
+            rtsp = adapt_to_size(df['rtsp'][i], size.RTSP)
             status = df['status'][i]
 
             txt = script_name.center(size.SCRIPT_NAME, " ") + "|" + \

@@ -128,8 +128,15 @@ def launch_scripts(list_devices):
         if prss.isScriptRunning():
             # Script lanzado correctamente
             print(txt + f"{bcolors.OKGREEN}OK{bcolors.ENDC}")
-            rtsp = list_devices[i]['rtsp_url']
+        
+            params = cfg_scripts[i]['params']
+            list_params = params.split()
             
+            for i in range(len(list_params)):
+                if list_params[i] == "--rtsp":
+                    rtsp = list_params[i + 1] # Obtenemos el rtsp de cada script
+                    break
+
             # Cada script debe de conectarse con el servidor para actulizar su estado
             # por eso status = Stopped
             data.insertRow(name_db=name_db,
@@ -138,7 +145,8 @@ def launch_scripts(list_devices):
                            rtsp=rtsp,
                            status=status_script.STOPPED)
 
-            scripts.append(prss) 
+            scripts.append(prss)
+
         else:
             print(txt + f"{bcolors.FAIL}FAIL{bcolors.FAIL}")
             scripts.append(None)
