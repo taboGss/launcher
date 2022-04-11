@@ -8,17 +8,13 @@ def move():
 	img = cv2.imread('lenna.jpg')
 	cv2.imshow('image', img)
 	cv2.waitKey(0)
-	
-	client.update_params(-98,-98,-98)
-	cv2.imshow('image', img)
-	cv2.waitKey(0)
 
 	cv2.destroyAllWindows()
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
-	parser.add_argument('--pos', type=int, default=0, help='position')
-	parser.add_argument('--pos2', type=int, default=0, help='position2')
+	parser.add_argument('--rtsp', type=str, default="", help='position')
+	parser.add_argument('--id', type=str, default="", help='position2')
 	opt = parser.parse_args()
 
 	move()
