@@ -46,6 +46,9 @@ def update_params(coordinate_x, coordinate_y, temp):
 def connecting_rtsp():
 	data.update_status(name_db, pid, status.CONNECTING)
 
+def connected_rtsp():
+	data.update_status(name_db, pid, status.RUNNING)
+
 def close():
 	session.close()
 

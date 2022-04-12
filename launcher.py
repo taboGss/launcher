@@ -115,8 +115,10 @@ def launch_scripts(list_devices):
     # Leemos la configuracion del launcher -- cfg/launcher_cfg.json
     cfg_scripts = read_launcher_cfg(list_devices)
     scripts = []
+    num_devices = 1 # Para hacer test. Numero de scripts que queremos correr
 
-    for i in range(len(list_devices)):
+    #for i in range(len(list_devices)):
+    for i in range(num_devices):
         # Ejecutamos el numero de scripts necesarios
         prss = SubProcess(cfg_scripts[i]['script_name'] + cfg_scripts[i]['params'])
         prss.runScript()

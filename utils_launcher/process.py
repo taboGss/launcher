@@ -23,7 +23,7 @@ class SubProcess:
     def runScript(self):
         self.procHandle = subprocess.Popen(self.commandArgs, 
                                            stdout=subprocess.PIPE, 
-                                           stderr=subprocess.STDOUT)
+                                           stderr=subprocess.DEVNULL)
         
         self.pid = self.procHandle.pid 
         return self.procHandle 
