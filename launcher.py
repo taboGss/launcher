@@ -1,5 +1,4 @@
-"""
-Modulo lanzador de aplicaciones
+"""Modulo lanzador de aplicaciones
 
 Usage:
     1. Configurar el archivo ./cfg/launcher_cfg.json

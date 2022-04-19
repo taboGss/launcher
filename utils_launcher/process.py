@@ -1,19 +1,19 @@
+import time
+
 import subprocess
 import shlex
-import time
+
 
 class SubProcess:
     """Esta clase ejecuta un script en segundo plano
 
     Attributes
     ----------
-    scriptArgs: list
+    scriptArgs : list
         [Nombre del script, args1, arg2, ..., argn]
     pid : int
         Process identification number
-
     """
-
     def __init__(self, script):
         self.scriptArgs = shlex.split(script)
         self.commandArgs = ["python"]
@@ -42,7 +42,8 @@ class SubProcess:
         if self.isScriptRunning(): self.procHandle.kill()
     
     def getOutput(self):
-        # stderr will be redirected to stdout due "stderr=subprocess.STDOUT" argument in Popen call
+        # stderr will be redirected to stdout due "stderr=subprocess.STDOUT" 
+        # argument in Popen call
         stdout, _ = self.procHandle.communicate()
         returncode = self.procHandle.returncode
         return returncode, stdout
