@@ -12,11 +12,9 @@ Usage:
     
     2. Establecer los parametros USER, PASSWORD y endpoint en el modulo
        ./utils_launcher/credentials.py
-
 """
 import os
 import time
-from regex import P
 
 import requests
 import json
