@@ -82,6 +82,7 @@ def read_launcher_cfg(list_devices):
     
     return cfg
 
+
 def get_devices():
     # Entramos al endpoint login para obtener el token de autenticacion
     os.system("clear")
