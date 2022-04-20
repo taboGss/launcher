@@ -160,9 +160,9 @@ def launch_scripts(list_devices):
             list_params = params.split()
             
             # Obtenemos el rtsp de cada script
-            for i in range(len(list_params)):
-                if list_params[i] == "--rtsp":
-                    rtsp = list_params[i + 1] 
+            for j in range(len(list_params)):
+                if list_params[j] == "--rtsp":
+                    rtsp = list_params[j + 1] 
                     break
 
             # Cada script debe de conectarse con el servidor para actulizar 
