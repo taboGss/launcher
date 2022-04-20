@@ -1,4 +1,3 @@
-from turtle import rt
 import pyfiglet
 import sys
 from select import select

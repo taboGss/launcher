@@ -16,7 +16,7 @@ class SubProcess:
     """
     def __init__(self, script):
         self.scriptArgs = shlex.split(script)
-        self.commandArgs = ["python"]
+        self.commandArgs = ["python3"]
         self.commandArgs.extend(self.scriptArgs)
         self.pid = None
 
