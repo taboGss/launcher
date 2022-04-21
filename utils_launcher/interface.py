@@ -118,15 +118,20 @@ def table_devices(list_devices):
     # Columnas
     print("", flush=True)
     print("=" * size.DEVICES_TABLE)
-    txt = "ID".center(size.ID, " ") + "|" + \
-        "NAME".center(size.NAME, " ") + "|" + \
-        "SCRIPT".center(size.SCRIPT_NAME, " ")
+    txt = "ID".center(size.ID, " ") + "|" \
+          + "NAME".center(size.NAME, " ") + "|" \
+          + "AREA".center(size.AREA, " ")
     print(txt)
     print("=" * size.DEVICES_TABLE)
 
     for i in range(len(list_devices)):
-        txt = str(list_devices[i]['id']).center(size.ID, " ") + "|" + \
-            list_devices[i]['name'].center(size.NAME, " ") + "|"
+        name = adapt_to_size(list_devices[i]['name'], size.NAME)
+        area = adapt_to_size(list_devices[i]['area'] + "???????????", size.AREA)
+
+        txt = str(list_devices[i]['id']).center(size.ID, " ") + "|" \
+              + name.center(size.NAME, " ") + "|" \
+              + area.center(size.AREA, " ")
+
         print(txt)
         print("=" * size.DEVICES_TABLE)
 

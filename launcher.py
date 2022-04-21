@@ -109,10 +109,10 @@ def get_devices():
     # Obtenemos la lista de todos los devices en el EndPoint
     resp = session.get('http://192.168.0.135:8000/api/v1/devices', 
                         headers=headers).json()
-    list_devices_fromDB = resp['response']
+    list_devices_from_endpoint = resp['response']
     list_devices = []
 
-    for device in list_devices_fromDB:
+    for device in list_devices_from_endpoint:
         temp_dict = {'id': device['id'],
                      'name': device['name'],
                      'area': device['area']['name'],

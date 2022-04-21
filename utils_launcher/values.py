@@ -1,4 +1,3 @@
-from http.client import UNAUTHORIZED
 import os
 
 # Colores para imprimir los mensaje que genera la base de datos
@@ -35,8 +34,9 @@ class size:
     SCRIPTS_TABLE = SCRIPT_NAME + PID + RTSP + STATUS + MARGIN
 
     ID = 4
-    NAME = 22
-    DEVICES_TABLE = ID + NAME + SCRIPT_NAME + MARGIN
+    NAME = 23
+    AREA = 21
+    DEVICES_TABLE = ID + NAME + AREA + MARGIN
 
 # Status code errors enviados por el endpoint
 class HTTP_ERROR:
