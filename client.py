@@ -11,7 +11,9 @@
 		Restablece el estado del script a RUNNING
 """
 import os
+
 import requests
+import json
 
 import utils_launcher.data_scripts as data
 from utils_launcher.values import name_db, status, HTTP_ERROR
@@ -22,9 +24,12 @@ from utils_launcher.credentials import USERNAME, PASSWORD, endpoint
 # al cliente.El PID es la forma en la que Launcher distingue todos los 
 # scripts que se estan corriendo   
 pid = os.getpid()
-
-session = requests.Session() 
 headers = {}
+session = requests.Session() 
+
+# Tipos de scripts 
+SPEED = 0
+PERSONS = 1
 
 
 def connect_to_launcher():
@@ -45,8 +50,52 @@ def connect_to_launcher():
 	data.update_status(name_db, pid, status.RUNNING)
 
 
-def update_params(coordinate_x, coordinate_y, temp):
-	pass
+def get_endpoint_template(script_type):
+	"""Obtener los datos necesarios para hacer Post
+	
+	Returns
+	-------
+	template : dict
+		template para rellenar y enviar al EndPoint
+	"""
+	if script_type == SPEED:
+		file = open('cfg/speed_cfg.json') 
+		cfg_json = json.load(file)
+		file.close()
+	else:
+		cfg_json = {"Empty": None} # Aqui va lo de Angel. Aun no esta listo
+
+	template = {}
+	for key in cfg_json:
+		template[key] = None
+	
+	return template
+
+
+def post_update(data, script_type):
+	"""Actualizar datos en el EndPoint
+
+	Parameters
+	----------
+	data : dict
+		template con los datos actualizados
+	script_type : int
+		tipo de script (SPEED / PERSONS)
+	
+	Returns
+	-------
+	status : bool
+		Se realizo exitosamente el update : True
+		otherwise : False
+	"""
+	if script_type == SPEED:
+		req = session.post(endpoint.POST_SPEED,
+						   json=data,
+						   headers=headers)
+	else:
+		pass # Aqui va lo de Angel. Aun no esta listo
+
+	return True
 
 
 def connecting_rtsp():
