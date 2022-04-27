@@ -1,0 +1,16 @@
+{
+  "script_name": "test_detector.py",
+  "params": ["rtsp",
+             "id",
+	     "coordinates"
+  ],
+
+  "set_params": {
+    "id": "77",
+    "rtsp": "local_host"
+  },
+
+  "alias": {
+    "coordinates": "zones"
+  }
+}

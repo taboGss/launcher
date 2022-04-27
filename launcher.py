@@ -30,12 +30,16 @@ import utils_launcher.data_scripts as data  # Escribir/Leer la base de datos
 import utils_launcher.interface as interface # Terminal User Interface (TUI) 
 
 
-def read_launcher_cfg(list_devices): 
+def read_launcher_cfg(list_devices, id_script): 
     # Parametros de configuracion que entrega el endpoint 
     params_endpoint = list_devices[0].keys()
     
     # Configuracion de parametros que enviara el launcher a cada script
-    file = open('cfg/launcher_cfg.json') 
+    if id_script == id.SPEED:
+        file = open('cfg/launcher_cfg_speed.json')
+    elif id_script == id.PERSONS:
+        file = open('cfg/launcher_cfg_persons.json')
+
     cfg_json = json.load(file)
     file.close()
 
@@ -157,7 +161,7 @@ def get_devices(id_script):
     return list_devices
 
 
-def launch_scripts(list_devices):
+def launch_scripts(list_devices, id_scripts):
     print("Lanzando scripts...")
 
     # Creamos la DB donde los scripts actualizan su estado. Esta es la forma 
@@ -165,13 +169,10 @@ def launch_scripts(list_devices):
     data.create_data_base(name_db)
 
     # Leemos la configuracion del launcher -- cfg/launcher_cfg.json
-    cfg_scripts = read_launcher_cfg(list_devices)
+    cfg_scripts = read_launcher_cfg(list_devices, id_scripts)
     scripts = []
     
-    num_devices = 1 # Para hacer test. Numero de scripts que queremos correr
-
-    #for i in range(len(list_devices)):
-    for i in range(num_devices):
+    for i in range(len(list_devices)):
         prss = SubProcess(cfg_scripts[i]['script_name'] 
                           + cfg_scripts[i]['params'])
         prss.runScript()
@@ -229,14 +230,15 @@ def main():
     interface.table_devices(list_devices)
 
     # Lanzamos los scripts
-    scripts = launch_scripts(list_devices)
+    scripts = launch_scripts(list_devices, id_script)
 
     interface_is_running = True
     while interface_is_running:
         # Comunicacion con el usuario a traves de la Terminal User Interface
         interface_is_running, scripts = interface.run_interface(scripts)
 
-    # Salimos del launcher, cerramos todos los scripts que se estan ejecuatando
+    # Salimos del launcher, cerramos todos los scripts que se 
+    # estan ejecuatando
     interface.close(scripts)
 
 if __name__ == "__main__":

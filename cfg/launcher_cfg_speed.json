@@ -1,0 +1,15 @@
+{
+  "script_name": "test_detector.py",
+  "params": ["rtsp",
+             "id"
+  ],
+
+  "set_params": {
+    "id": "0",
+    "rtspp": "null"
+  },
+
+  "alias": {
+    "rtsp": "rtsp_url"
+  }
+}
