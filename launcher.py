@@ -16,13 +16,15 @@ import os
 import time
 
 import requests
+import argparse
 import json
 
 from utils_launcher.values import bcolors
+from utils_launcher.values import list_scripts
 from utils_launcher.process import SubProcess
 from utils_launcher.values import status as status_script
 from utils_launcher.values import HTTP_ERROR
-from utils_launcher.credentials import USERNAME, PASSWORD, endpoint
+from utils_launcher.credentials import USERNAME, PASSWORD, endpoint, id
 from utils_launcher.values import name_db # Path de la base de datos
 import utils_launcher.data_scripts as data  # Escribir/Leer la base de datos
 import utils_launcher.interface as interface # Terminal User Interface (TUI) 
@@ -82,7 +84,16 @@ def read_launcher_cfg(list_devices):
     return cfg
 
 
-def get_devices():
+def format_coordinates(coordinates):
+	"""Dar formato a las coordenadas que provienen del Endpoint"""
+	coor = "["
+	for point in coordinates:
+		coor += "(" + str(point['x']) + "," + str(point['y']) + "),"	
+	
+	return coor[:-1] + "]"
+
+
+def get_devices(id_script):
     # Entramos al endpoint login para obtener el token de autenticacion
     os.system("clear")
     print("Conectando con el EndPoint... ", end="", flush=True)
@@ -107,8 +118,7 @@ def get_devices():
     print("Obteniendo info... ", end="")
 
     # Obtenemos la lista de todos los devices en el EndPoint
-    resp = session.get('http://192.168.0.135:8000/api/v1/devices', 
-                        headers=headers).json()
+    resp = session.get(endpoint.GET_DEVICES, headers=headers).json()
     list_devices_from_endpoint = resp['response']
     list_devices = []
 
@@ -117,9 +127,29 @@ def get_devices():
                      'name': device['name'],
                      'area': device['area']['name'],
                      'rtsp_url': device['rtsp_url'],
-                     'rtsp_recording_url': device['rtsp_recording_url']}
+                     'rtsp_recording_url': device['rtsp_recording_url'],
+                     'zones' : ''}
         list_devices.append(temp_dict)
 
+    ### TEMPORAL ###
+    list_devices = [list_devices[0]]
+
+    # Obtenemos las zonas por cada camara
+    body = {'event_type_id' : id_script} 
+    for idx, device in enumerate(list_devices):
+        resp = session.get(endpoint.GET_DEVICES_ZONES + str(device['id']), 
+                           data=body,
+                           headers=headers).json()
+        
+        zones = resp['response']['zones']
+        zones_str = "\'[" # Formato propuesto por Angel 
+        
+        for zone in zones:
+            zones_str += format_coordinates(zone['coordinates']) + ","
+        
+        zones_str = zones_str[:-1] + "]\'"
+        list_devices[idx]['zones'] = zones_str
+        
     # Dispositivos obtenidos correctamente
     print(f"{bcolors.OKGREEN}OK{bcolors.ENDC}")
     session.close()
@@ -183,20 +213,36 @@ def launch_scripts(list_devices):
     
     return scripts
 
+def main():
+    script_to_launch = opt.script
+    # El endpoint entrega las zonas de cada camara de acuerdo al id  
+    # especifico de cada aplicacion
+    if script_to_launch == list_scripts.SPEED:
+        id_script = id.SPEED 
+    else: 
+        id_script = id.PERSONS
+    
+    # Obtenemos la lista de devices desde el EndPoint
+    list_devices = get_devices(id_script)
 
-# Obtenemos la lista de devices desde el EndPoint
-list_devices = get_devices()
+    # Mostramos los scripts a lanzar
+    interface.table_devices(list_devices)
 
-# Mostramos los scripts a lanzar
-interface.table_devices(list_devices)
+    # Lanzamos los scripts
+    scripts = launch_scripts(list_devices)
 
-# Lanzamos los scripts
-scripts = launch_scripts(list_devices)
+    interface_is_running = True
+    while interface_is_running:
+        # Comunicacion con el usuario a traves de la Terminal User Interface
+        interface_is_running, scripts = interface.run_interface(scripts)
 
-interface_is_running = True
-while interface_is_running:
-    # Comunicacion con el usuario a traves de la Terminal User Interface
-    interface_is_running, scripts = interface.run_interface(scripts)
+    # Salimos del launcher, cerramos todos los scripts que se estan ejecuatando
+    interface.close(scripts)
 
-# Salimos del launcher, cerramos todos los scripts que se estan ejecuatando
-interface.close(scripts)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--script', type=str, required=True, 
+                        help='Tipo de script [persons, speed]')
+
+    opt = parser.parse_args()
+    main()

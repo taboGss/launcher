@@ -19,7 +19,7 @@ class bcolors:
 class options:
 	ESCAPE = 4 # Salir del menu
 	INVALID = -999 # Opcion no valida
-	RESTART = -999 # Reset para la opcion. Es necesario al cambiar o iniciar el menu
+	RESTART = -999 # Reset para la opcion.
 	MAIN1 = 1 # Menu 1: Mostrar scripts en ejecucion
 	MAIN2 = 2 # Menu 2: Mostrar ultimas peticiones 
 	MAIN3 = 3 # Menu 3: Ejecutar/Eliminar script
@@ -48,5 +48,10 @@ class status:
     STOPPED = -1
     CONNECTING = 0
 
+class list_scripts:
+    SPEED = "speed"
+    PERSONS = "persons"
+
 dir = 'utils_launcher'
-name_db = os.path.join(os.getcwd(), dir, "status_scripts.db") # Nombre de la base de datos
+# Nombre de la base de datos
+name_db = os.path.join(os.getcwd(), dir, "status_scripts.db")
