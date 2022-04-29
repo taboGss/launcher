@@ -132,7 +132,8 @@ def get_devices(id_script):
                      'area': device['area']['name'],
                      'rtsp_url': device['rtsp_url'],
                      'rtsp_recording_url': device['rtsp_recording_url'],
-                     'zones' : ''}
+                     'zones' : '',
+                     'zones_id' : ''}
         list_devices.append(temp_dict)
 
     ### TEMPORAL ###
@@ -146,13 +147,18 @@ def get_devices(id_script):
                            headers=headers).json()
         
         zones = resp['response']['zones']
-        zones_str = "\'[" # Formato propuesto por Angel 
+        zones_str = "\'[" # Formato propuesto por Angel
+        zones_id_str = "\'[" # Formato propuesto por Angel
         
         for zone in zones:
             zones_str += format_coordinates(zone['coordinates']) + ","
+            zones_id_str += str(zone['id']) + ","
         
         zones_str = zones_str[:-1] + "]\'"
+        zones_id_str = zones_id_str[:-1] + "]\'"
+
         list_devices[idx]['zones'] = zones_str
+        list_devices[idx]['zones_id'] = zones_id_str
         
     # Dispositivos obtenidos correctamente
     print(f"{bcolors.OKGREEN}OK{bcolors.ENDC}")
