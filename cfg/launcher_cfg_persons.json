@@ -1,9 +1,7 @@
 {
   "script_name": "test_detector.py",
   "params": ["rtsp",
-             "id",
-	     "coordinates",
-       "zones_id"
+             "id"
   ],
 
   "set_params": {
@@ -12,6 +10,5 @@
   },
 
   "alias": {
-    "coordinates": "zones"
   }
 }

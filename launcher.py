@@ -13,7 +13,6 @@ Usage:
        ./utils_launcher/credentials.py
 """
 import os
-from re import L
 import time
 
 import requests
@@ -151,7 +150,7 @@ def get_devices(id_script):
         list_devices.append(temp_dict)
 
     ### TEMPORAL ###
-    list_devices = [list_devices[0]]
+    #list_devices = [list_devices[0]]
 
     # Obtenemos las zonas por cada camara
     body = {'event_type_id' : id_script} 
@@ -181,7 +180,7 @@ def get_devices(id_script):
     return list_devices
 
 
-def launch_scripts(list_devices, id_scripts):
+def launch_scripts(list_devices, id_script):
     print("Lanzando scripts...")
 
     # Creamos la DB donde los scripts actualizan su estado. Esta es la forma 
@@ -189,7 +188,7 @@ def launch_scripts(list_devices, id_scripts):
     data.create_data_base(name_db)
 
     # Leemos la configuracion del launcher -- cfg/launcher_cfg.json
-    cfg_scripts = read_launcher_cfg(list_devices, id_scripts)
+    cfg_scripts = read_launcher_cfg(list_devices, id_script)
     scripts = []
     
     for i in range(len(list_devices)):

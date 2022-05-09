@@ -1,22 +1,17 @@
 import argparse
 import client
+import cv2
 
 
 def main():
     
-    client.connect_to_launcher()
-    template = client.get_endpoint_template(client.SPEED)
+   client.connect_to_launcher()
+   
+   img = cv2.imread('lenna.jpg')
+   cv2.imshow(str(client.pid), img)
+   cv2.waitKey(0)
 
-    template['device_id'] = 14
-    template['zone_id'] = 54
-    template['license_plate'] = "tabo"
-    template['avg_speed'] = "0"
-    template['max_speed'] = "0"
-    template['video_url'] = "null"
-
-    
-    status = client.post_update(template, client.SPEED)
-    client.close()
+   cv2.destroyAllWindows()
 
 
 if __name__ == '__main__':
