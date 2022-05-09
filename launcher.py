@@ -1,7 +1,7 @@
 """Modulo lanzador de aplicaciones
 
 Usage:
-    1. Configurar el archivo ./cfg/launcher_cfg.json
+    1. Configurar el archivo ./cfg/launcher_cfg_... .json
         - script_name : script a lanzar
         - params : parametros solicitados por el script
         - set_params : Si el script necesita algun parametro fijo, 
@@ -13,6 +13,7 @@ Usage:
        ./utils_launcher/credentials.py
 """
 import os
+from re import L
 import time
 
 import requests
@@ -63,20 +64,33 @@ def read_launcher_cfg(list_devices, id_script):
             if param in params_endpoint:
                 # El parametro esta marcado como set en el .json
                 if param in set_params:
-                    params += cfg_json['set_params'][param]
+                    if not isinstance(cfg_json['set_params'][param], str):
+                        params += str(cfg_json['set_params'][param])
+                    else:
+                        params += cfg_json['set_params'][param]
                 else:
                     # El parametro es arbitrario. Lo tomamos del endpoint
-                    params += list_devices[i][param] 
+                    if not isinstance(list_devices[i][param], str):
+                        params += str(list_devices[i][param])
+                    else:
+                        params += list_devices[i][param] 
             
             elif param in set_params:
                 # El parametro no es entregado por el endpoint, pero esta
                 # marcado como set en el .json
-                params += cfg_json['set_params'][param]
+                if not isinstance(cfg_json['set_params'][param], str):
+                    params += str(cfg_json['set_params'][param])
+                else:
+                    params += cfg_json['set_params'][param]
                
             elif param in alias:
                 # El endpoint entrega el parametro, pero con un nombre
                 # diferente al solicitado por el script
-                params += list_devices[i][cfg_json['alias'][param]]
+                if not isinstance(list_devices[i][cfg_json['alias'][param]],
+                                  str):
+                    params += str(list_devices[i][cfg_json['alias'][param]])
+                else:
+                    params += list_devices[i][cfg_json['alias'][param]]
             
             else:
                 # Por cada parametro que no encuentre regresa None

@@ -7,8 +7,8 @@
   ],
 
   "set_params": {
-    "id": "77",
-    "rtsp": "local_host"
+    "rtsp": "local_host",
+    "id" : 22
   },
 
   "alias": {
