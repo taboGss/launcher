@@ -62,8 +62,14 @@ def get_endpoint_template(script_type):
 		file = open('cfg/speed_template.json')
 		cfg_json = json.load(file)
 		file.close()
+	
+	elif script_type == PERSONS:
+		file = open('cfg/persons_template.json')
+		cfg_json = json.load(file)
+		file.close()
+
 	else:
-		cfg_json = {"Empty": None} # Aqui va lo de Angel. Aun no esta listo
+		cfg_json = {"Empty": None}
 
 	template = {}
 	for key in cfg_json:
@@ -92,8 +98,14 @@ def post_update(data, script_type):
 		req = session.post(endpoint.POST_SPEED,
 						   json=data,
 						   headers=headers)
+	
+	elif script_type == PERSONS:
+		req = session.post(endpoint.POST_PERSONS,
+						   json=data,
+						   headers=headers)
+
 	else:
-		pass # Aqui va lo de Angel. Aun no esta listo
+		return False
 
 	return req.status_code == HTTP.SUCCESS
 
@@ -108,5 +120,3 @@ def connected_rtsp():
 
 def close():
 	session.close()
-
-

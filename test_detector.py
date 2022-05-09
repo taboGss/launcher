@@ -9,7 +9,7 @@ def main():
 
     template['device_id'] = 14
     template['zone_id'] = 54
-    template['license_plate'] = "tabo - prueba"
+    template['license_plate'] = "tabo"
     template['avg_speed'] = "0"
     template['max_speed'] = "0"
     template['video_url'] = "null"
