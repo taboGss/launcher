@@ -1,9 +1,5 @@
 import argparse
-import cv2
 import client
-
-from rtsp.auxiliar_functions import Screen
-from rtsp.connection import cam_rtsp
 
 
 def main():
@@ -11,12 +7,12 @@ def main():
     client.connect_to_launcher()
     template = client.get_endpoint_template(client.SPEED)
 
-    template['device_id'] = 11
-    template['zone_id'] = 41
-    template['license_plate'] = "UZW123"
-    template['avg_speed'] = "333"
-    template['max_speed'] = "333"
-    template['video_url'] = "None"
+    template['device_id'] = 14
+    template['zone_id'] = 54
+    template['license_plate'] = "tabo - prueba"
+    template['avg_speed'] = "0"
+    template['max_speed'] = "0"
+    template['video_url'] = "null"
 
     
     status = client.post_update(template, client.SPEED)

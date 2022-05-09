@@ -42,6 +42,9 @@ class size:
 class HTTP_ERROR:
     UNAUTHORIZED = 401
 
+class HTTP:
+    SUCCESS = 200
+
 # Estados de los scripts
 class status:
     RUNNING = 1
@@ -55,3 +58,4 @@ class list_scripts:
 dir = 'utils_launcher'
 # Nombre de la base de datos
 name_db = os.path.join(os.getcwd(), dir, "status_scripts.db")
+

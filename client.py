@@ -16,7 +16,7 @@ import requests
 import json
 
 import utils_launcher.data_scripts as data
-from utils_launcher.values import name_db, status, HTTP_ERROR
+from utils_launcher.values import name_db, status, HTTP, HTTP_ERROR
 from utils_launcher.credentials import USERNAME, PASSWORD, endpoint
 
 
@@ -59,7 +59,7 @@ def get_endpoint_template(script_type):
 		template para rellenar y enviar al EndPoint
 	"""
 	if script_type == SPEED:
-		file = open('cfg/speed_cfg.json') 
+		file = open('cfg/speed_template.json')
 		cfg_json = json.load(file)
 		file.close()
 	else:
@@ -95,7 +95,7 @@ def post_update(data, script_type):
 	else:
 		pass # Aqui va lo de Angel. Aun no esta listo
 
-	return True
+	return req.status_code == HTTP.SUCCESS
 
 
 def connecting_rtsp():
