@@ -1,4 +1,3 @@
-from dis import Instruction
 import sqlite3
 
 def create_data_base(name_db):
