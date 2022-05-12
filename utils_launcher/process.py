@@ -21,9 +21,10 @@ class SubProcess:
         self.pid = None
 
     def runScript(self):
-        self.procHandle = subprocess.Popen(self.commandArgs, 
-                                           stdout=subprocess.PIPE, 
-                                           stderr=subprocess.DEVNULL)
+        with open('./utils_launcher/std_err.txt', 'w') as std_err_file:
+            self.procHandle = subprocess.Popen(self.commandArgs, 
+                                               stdout=subprocess.PIPE, 
+                                               stderr=std_err_file)
         
         self.pid = self.procHandle.pid 
         return self.procHandle 

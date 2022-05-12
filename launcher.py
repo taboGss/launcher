@@ -150,7 +150,7 @@ def get_devices(id_script):
         list_devices.append(temp_dict)
 
     ### TEMPORAL ###
-    #list_devices = [list_devices[0]]
+    list_devices = [list_devices[0]]
 
     # Obtenemos las zonas por cada camara
     body = {'event_type_id' : id_script} 
