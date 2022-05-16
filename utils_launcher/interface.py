@@ -126,7 +126,7 @@ def table_devices(list_devices):
 
     for i in range(len(list_devices)):
         name = adapt_to_size(list_devices[i]['name'], size.NAME)
-        area = adapt_to_size(list_devices[i]['area'] + "???????????", size.AREA)
+        area = adapt_to_size(list_devices[i]['area'], size.AREA)
 
         txt = str(list_devices[i]['id']).center(size.ID, " ") + "|" \
               + name.center(size.NAME, " ") + "|" \

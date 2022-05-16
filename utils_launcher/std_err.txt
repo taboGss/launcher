@@ -1,6 +1,390 @@
-Traceback (most recent call last):
-  File "test_detector.py", line 24, in <module>
-    main()
-  File "test_detector.py", line 11, in main
-    cv2.imshow(str(client.pid), img3)
-NameError: name 'img3' is not defined
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55ef5751f130) is not the object's thread (0x55ef576d17d0).
+Cannot move to target thread (0x55ef5751f130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55ef5751f130) is not the object's thread (0x55ef576d17d0).
+Cannot move to target thread (0x55ef5751f130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x5634dddab130) is not the object's thread (0x5634ddf5c3b0).
+Cannot move to target thread (0x5634dddab130)
+
+QObject::moveToThread: Current thread (0x55c4e028a8e0) is not the object's thread (0x55c4e0472a50).
+Cannot move to target thread (0x55c4e028a8e0)
+
+QObject::moveToThread: Current thread (0x55ef5751f130) is not the object's thread (0x55ef576d17d0).
+Cannot move to target thread (0x55ef5751f130)
+

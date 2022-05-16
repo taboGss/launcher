@@ -1,14 +1,14 @@
 {
-  "script_name": "test_detector.py",
+  "script_name": "detector.py",
   "params": ["rtsp",
              "id"
   ],
 
   "set_params": {
-    "rtsp": "local_host",
-    "id" : 22
   },
 
   "alias": {
+    "rtsp" : "rtsp_url",
+    "id" : "device_id"
   }
 }

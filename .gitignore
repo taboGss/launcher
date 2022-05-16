@@ -1,1 +1,5 @@
 *.db
+__pycache__/
+utils_launcher/std_err.txt
+rtsp/__pycache__/
+utils_launcher/__pycache__/
